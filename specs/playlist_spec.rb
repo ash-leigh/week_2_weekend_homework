@@ -3,7 +3,7 @@ require_relative('../playlist')
 require_relative('../song')
 
 
-class TestSongLibrary < Minitest::Test
+class TestPlayList < Minitest::Test
 
   def setup
     song_1 = Song.new("girls just want to have fun", "cyndi lauper", genre = ["pop", "dance", "new wave"], "70's")
@@ -30,7 +30,42 @@ class TestSongLibrary < Minitest::Test
 
     songs = [song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20]
 
-    @song_library = PlayList.new(songs)
+    @library = PlayList.new(songs)
   end
 
+  def test_how_many_songs_are_in_library
+    assert_equal(20, @library.number_of_songs_in_library)
+  end
+
+  def test_filter_song_by_name
+    songs = @library.filter_song_by_name("girls just want to have fun")
+    assert_equal(1, songs.count)
+  end
+
+  def test_filter_song_by_artist
+    songs = @library.filter_song_by_artist("cyndi lauper")
+    assert_equal(1, songs.count)
+  end
+
+  def test_filter_song_by_decade
+    songs = @library.filter_song_by_decade("70's")
+    assert_equal(10, songs.count)
+  end
+
+  def test_filter_songs_by_genre
+    songs = @library.filter_song_by_genre("pop")
+    assert_equal(11, songs.count)
+  end
+
+
 end
+
+
+
+
+
+
+
+
+
+
