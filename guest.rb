@@ -6,4 +6,6 @@ class Guest
     @cash = cash
   end
 
+  
+
 end
