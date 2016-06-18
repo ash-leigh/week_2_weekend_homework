@@ -26,15 +26,25 @@ class TestPlayList < Minitest::Test
     song_18 = Song.new("sweet dreams", "eurythmics", genre = ["pop", "new wave"], "80's")
     song_19 = Song.new("like a virgin", "madonna", genre = ["dance", "pop"], "80's")
     song_20 = Song.new("jessie's girl", "rick springfield", genre = ["pop"], "80's")
+    song_21 = Song.new("smells like teen spirit", "nirvana", genre = ["grunge", "alternative", "rock"], "90's")
+    song_22 = Song.new("wonderwall", "oasis", genre = ["pop"], "90's")
+    song_23 = Song.new("losing my religion", "rem", genre = ["alternative", "rock", "folk"], "90's")
+    song_24 = Song.new("baby one more time", "britney spears", genre = ["pop", "dance"], "90's")
+    song_25 = Song.new("killing in the name", "rage against the machine", genre = ["rap", "metal"], "90's")
+    song_26 = Song.new("ice ice baby", "vanilla ice", genre = ["hip hop"], "90's")
+    song_27 = Song.new("spice up your life", "spice girls", genre = ["pop", "dance"], "90's")
+    song_28 = Song.new("mmmbop", "hanson", genre = ["pop"], "90's")
+    song_29 = Song.new("u can't touch this", "mc hammer", genre = ["pop", "rap"], "90's")
+    song_30 = Song.new("waterfalls", "tlc", genre = ["pop", "r&b", "hip hop"], "90's")
 
 
-    songs = [song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20]
+    songs = [song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20, song_21, song_22, song_23, song_24, song_25, song_26, song_27, song_28, song_29, song_30]
 
     @library = PlayList.new(songs)
   end
 
   def test_how_many_songs_are_in_library
-    assert_equal(20, @library.number_of_songs_in_library)
+    assert_equal(30, @library.number_of_songs_in_library)
   end
 
   def test_filter_song_by_name
@@ -54,7 +64,7 @@ class TestPlayList < Minitest::Test
 
   def test_filter_songs_by_genre
     songs = @library.filter_song_by_genre("pop")
-    assert_equal(11, songs.count)
+    assert_equal(17, songs.count)
   end
 
 

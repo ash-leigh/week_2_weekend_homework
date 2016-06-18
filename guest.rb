@@ -6,6 +6,11 @@ class Guest
     @cash = cash
   end
 
+  def filter_room_by_group_size(size)
+    
+
+  end
+
   
 
 end
