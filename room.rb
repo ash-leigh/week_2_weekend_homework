@@ -1,5 +1,5 @@
 class Room
-  attr_reader :name, :price, :maximum_capacity_of_room, :room_playlist, :room_guests
+  attr_reader :name, :price, :maximum_capacity_of_room, :room_playlist, :room_guests, :room_tab
 
   def initialize(name, price, maximum_capacity_of_room)
     @name = name
@@ -7,6 +7,7 @@ class Room
     @maximum_capacity_of_room = maximum_capacity_of_room
     @room_playlist = []
     @room_guests = []
+    @room_tab = 0
   end
 
   def number_of_songs_in_room_playlist
@@ -25,7 +26,7 @@ class Room
   end
 
   def add_guest_to_room(guest)
-     @room_guests << guest
+     @room_guests << guest if @room_playlist.count < @maximum_capacity_of_room
   end
 
   def remove_guest_from_room(leaving_guest)

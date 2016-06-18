@@ -99,5 +99,9 @@ class TestRoom < Minitest::Test
    assert_equal(0, @room.number_of_guests_in_room)
   end
 
+  def test_total_of_room_tab
+    assert_equal(0, @room.room_tab)
+  end
+
 
 end
