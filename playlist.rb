@@ -4,7 +4,6 @@ class PlayList
 
   def initialize(library)
     @library = library
-
   end
 
   def number_of_songs_in_library

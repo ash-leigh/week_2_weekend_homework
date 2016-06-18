@@ -13,7 +13,7 @@ class TestGuest < Minitest::Test
 
     rooms = [room_1, room_2, room_3]
 
-    @rooms = Venue.new(rooms)
+    @venue = Venue.new(rooms)
   end
 
   def test_guest_has_name

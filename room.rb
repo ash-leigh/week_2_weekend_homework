@@ -1,11 +1,12 @@
 class Room
-  attr_reader :name, :price, :maximum_capacity_of_room, :room_playlist
+  attr_reader :name, :price, :maximum_capacity_of_room, :room_playlist, :room_guests
 
   def initialize(name, price, maximum_capacity_of_room)
     @name = name
     @price = price
     @maximum_capacity_of_room = maximum_capacity_of_room
     @room_playlist = []
+    @room_guests = []
   end
 
   def number_of_songs_in_room_playlist
@@ -18,6 +19,13 @@ class Room
       @room_playlist << selection
     end
   end
-  
+
+  def number_of_guests_in_room
+    @room_guests.count
+  end
+
+  def add_guest_to_room(guest)
+     @room_guests << guest
+  end
 
 end
