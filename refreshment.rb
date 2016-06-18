@@ -1,4 +1,5 @@
 class Refreshment
+
   attr_reader :type, :name, :price
 
   def initialize(type, name, price)

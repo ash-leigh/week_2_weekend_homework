@@ -1,7 +1,5 @@
 class PlayList
 
-  attr_reader :filter_song_by_name, :filter_song_by_artist, :filter_song_by_decade, :filter_song_by_genre
-
   def initialize(library)
     @library = library
   end

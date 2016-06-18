@@ -3,6 +3,9 @@ require_relative('../room')
 require_relative('../playlist')
 require_relative('../song')
 require_relative('../guest')
+require_relative('../bar')
+require_relative('../refreshment')
+
 
 class TestRoom < Minitest::Test
 
@@ -47,6 +50,21 @@ class TestRoom < Minitest::Test
     songs = [song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20, song_21, song_22, song_23, song_24, song_25, song_26, song_27, song_28, song_29, song_30]
 
     @library = PlayList.new(songs)
+
+    refreshment_1 = Refreshment.new("drink", "beer", 4)
+    refreshment_2 = Refreshment.new("drink", "wine", 5)
+    refreshment_3 = Refreshment.new("drink", "cocktail", 4)
+    refreshment_4 = Refreshment.new("drink", "pitcher", 10)
+    refreshment_5 = Refreshment.new("drink", "spirit", 5)
+    refreshment_6 = Refreshment.new("drink", "fizzy juice", 3)
+    refreshment_7 = Refreshment.new("snack", "popcorn", 4)
+    refreshment_8 = Refreshment.new("snack", "chicken wings", 4)
+    refreshment_9 = Refreshment.new("snack", "chips", 2)
+    refreshment_10 = Refreshment.new("snack", "ice-cream", 3)
+
+    menu = [refreshment_1, refreshment_2, refreshment_3, refreshment_4, refreshment_5, refreshment_6, refreshment_7, refreshment_8, refreshment_9, refreshment_10]
+
+    @bar = Bar.new(menu)
   end
 
   def test_room_has_name
@@ -103,5 +121,14 @@ class TestRoom < Minitest::Test
     assert_equal(0, @room.room_tab)
   end
 
+  def test_add_refreshment_to_room
+    refreshments = @room.add_refreshment_to_room(@bar.filter_refreshments_by_name("beer"))
+    assert_equal(1, refreshments.count)
+  end
+
+  def test_add_refreshment_cost_to_room_tab
+    @room.add_refreshment_cost_to_room_tab(4)
+    assert_equal(4, @room.room_tab)
+  end
 
 end

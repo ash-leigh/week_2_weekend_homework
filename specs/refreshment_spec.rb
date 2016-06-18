@@ -11,7 +11,7 @@ class TestRefreshment < Minitest::Test
     assert_equal("drink", @refreshment.type)
   end
 
-  def test_song_has_artist
+  def test_song_has_name
     assert_equal("beer", @refreshment.name)
   end
 
