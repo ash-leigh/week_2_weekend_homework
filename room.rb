@@ -28,4 +28,9 @@ class Room
      @room_guests << guest
   end
 
+  def remove_guest_from_room(leaving_guest)
+    @room_guests.delete_if {|guest| guest == leaving_guest}
+  end
+
+
 end

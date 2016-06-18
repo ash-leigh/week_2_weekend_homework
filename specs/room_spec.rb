@@ -89,9 +89,14 @@ class TestRoom < Minitest::Test
     assert_equal(0, @room.number_of_guests_in_room)
   end
 
-  def test_add_customer_to_room
+  def test_add_guest_to_room
    @room.add_guest_to_room(@guest)
    assert_equal(1, @room.number_of_guests_in_room)
+  end
+
+  def test_remove_guest_from_room
+   @room.remove_guest_from_room(@guest)
+   assert_equal(0, @room.number_of_guests_in_room)
   end
 
 
