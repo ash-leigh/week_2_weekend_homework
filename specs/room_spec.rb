@@ -127,8 +127,8 @@ class TestRoom < Minitest::Test
   end
 
   def test_add_refreshment_cost_to_room_tab
-    @room.add_refreshment_cost_to_room_tab(4)
-    assert_equal(4, @room.room_tab)
+    @room.add_refreshment_to_room(@bar.filter_refreshments_by_name("beer"))
+    assert_equal(4, @room.add_refreshment_cost_to_room_tab)
   end
 
 end

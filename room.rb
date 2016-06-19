@@ -41,8 +41,13 @@ class Room
     end
   end
 
-  def add_refreshment_cost_to_room_tab(refreshment_cost)
-    @room_tab += refreshment_cost
+  def add_refreshment_cost_to_room_tab
+    prices = []
+    for refreshment in @room_refreshments
+      prices << refreshment.price
+    end
+    prices.each {|refreshment| @room_tab += refreshment}
+    return @room_tab
   end
 
 
