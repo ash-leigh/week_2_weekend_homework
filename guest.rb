@@ -1,12 +1,13 @@
 class Guest
-  attr_reader :name, :cash
+  attr_reader :name, :cash, :party_size
 
-  def initialize(name, cash)
+  def initialize(name, cash, party_size)
     @name = name
     @cash = cash
+    @party_size = party_size
   end
 
-  def filter_room_by_group_size(size)
+  def guest_picks_room(size)
     
 
   end

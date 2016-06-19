@@ -5,7 +5,7 @@ require_relative('../venue')
 class TestGuest < Minitest::Test
 
   def setup
-    @guest = Guest.new("Ashleigh Adams", 150)
+    @guest = Guest.new("Ashleigh Adams", 150, 10)
 
     room_1 = Room.new("King Tuts Wah Wah Hut", 100, 10)
     room_2 = Room.new("Barrowland", 50, 5)

@@ -48,22 +48,22 @@ class TestPlayList < Minitest::Test
   end
 
   def test_filter_song_by_name
-    songs = @library.filter_song_by_name("girls just want to have fun")
+    songs = @venue.filter_song_by_name("girls just want to have fun")
     assert_equal(1, songs.count)
   end
 
   def test_filter_song_by_artist
-    songs = @library.filter_song_by_artist("cyndi lauper")
+    songs = @venue.filter_song_by_artist("cyndi lauper")
     assert_equal(1, songs.count)
   end
 
   def test_filter_song_by_decade
-    songs = @library.filter_song_by_decade("70's")
+    songs = @venue.filter_song_by_decade("70's")
     assert_equal(10, songs.count)
   end
 
   def test_filter_songs_by_genre
-    songs = @library.filter_song_by_genre("pop")
+    songs = @venue.filter_song_by_genre("pop")
     assert_equal(17, songs.count)
   end
 
