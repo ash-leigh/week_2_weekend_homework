@@ -12,17 +12,13 @@ class Venue
   end
 
   def display_rooms
-    rooms_to_display = []
-    for room in @rooms
-      rooms_to_display << room
-    end
-      for room in rooms_to_display
-      puts "\n"
-      puts room.name
-      puts "£ #{room.price.to_f}"
-      puts "\n"
-      puts room.maximum_capacity_of_room
-    end
+    @rooms
+  end
+
+  def pick_room(name)
+    room_choice = @rooms.select {|room| room.name == name}
+    choice = room_choice.map {|refreshment| refreshment}
+    return choice
   end
 
   def number_of_songs_in_library
@@ -53,6 +49,17 @@ class Venue
     return songs
   end
 
+  def number_of_songs_in_room_playlist
+    @room_playlist.count
+  end
+
+  def add_to_room_playlist(song)
+    songs_to_add = song
+    for selection in songs_to_add 
+      @room_playlist << selection
+    end
+  end
+
   def number_of_items_on_menu
     @menu.count()
   end
@@ -75,6 +82,20 @@ class Venue
     return options
   end
 
+  def add_refreshment_to_room(refreshment)
+    refreshment_to_add = refreshment
+    for selection in refreshment_to_add 
+      @room_refreshments << selection
+    end
+  end
 
+  def add_refreshment_cost_to_room_tab
+    prices = []
+    for refreshment in @room_refreshments
+      prices << refreshment.price
+    end
+    prices.each {|refreshment| @room_tab += refreshment}
+    return @room_tab
+  end
 
 end

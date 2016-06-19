@@ -6,12 +6,5 @@ class Guest
     @cash = cash
     @party_size = party_size
   end
-
-  def guest_picks_room(size)
-    
-
-  end
-
   
-
 end

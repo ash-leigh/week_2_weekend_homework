@@ -1,5 +1,5 @@
 require('minitest/autorun')
-require_relative('../karaoke_venue')
+require_relative('../venue')
 require_relative('../guest')
 require_relative('../room')
 require_relative('../song')
@@ -9,7 +9,9 @@ require_relative('../refreshment')
 class TestVenue < Minitest::Test
 
   def setup
-    @guest = Guest.new("name", 150, 10)
+    @guest = Guest.new("Ashleigh", 150, 10)
+
+    @room = Room.new("King Tuts Wah Wah Hut", 100, 10)
 
     room_1 = Room.new("King Tuts Wah Wah Hut", 100, 10)
     room_2 = Room.new("Barrowland", 50, 5)
@@ -71,7 +73,13 @@ class TestVenue < Minitest::Test
   end
 
   def test_display_rooms
-    assert_equal([], @venue.display_rooms)
+    rooms_to_display = @venue.display_rooms
+    assert_equal(3, rooms_to_display.count)
+  end
+
+  def test_pick_room
+    room = @venue.pick_room("King Tuts Wah Wah Hut")
+    assert_equal(1, room.count)
   end
 
   def test_how_many_songs_are_in_library
@@ -98,6 +106,35 @@ class TestVenue < Minitest::Test
     assert_equal(17, songs.count)
   end
 
+  def test_number_of_songs_in_room_playlist
+    room = @venue.pick_room("King Tuts Wah Wah Hut")
+    assert_equal(0, @room.number_of_songs_in_room_playlist)
+  end
+
+  def test_add_to_room_playlist__single_song_by_name
+    song = @venue.filter_song_by_name("girls just want to have fun")
+    @room.add_to_room_playlist(song)
+    assert_equal(1, @room.number_of_songs_in_room_playlist)
+  end
+
+  def test_add_to_room_playlist__single_song_by_artist
+    song = @venue.filter_song_by_artist("cyndi lauper")
+    @room.add_to_room_playlist(song)
+    assert_equal(1, @room.number_of_songs_in_room_playlist)
+  end
+
+  def test_add_song_to_room_playlist__all_decade_songs
+    song = @venue.filter_song_by_decade("70's")
+    @room.add_to_room_playlist(song)
+    assert_equal(10, @room.number_of_songs_in_room_playlist)
+  end
+
+  def test_add_song_to_room_playlist__all_genre_songs
+    song = @venue.filter_song_by_genre("pop")
+    @room.add_to_room_playlist(song)
+    assert_equal(17, @room.number_of_songs_in_room_playlist)
+  end
+
   def test_how_many_refreshments_are_in_bar
     assert_equal(10, @venue.number_of_items_on_menu)
   end
@@ -115,6 +152,21 @@ class TestVenue < Minitest::Test
   def test_filter_refreshment_by_price
     items = @venue.filter_refreshments_by_price(3)
     assert_equal(3, items.count)
+  end
+
+  def test_add_refreshment_to_room
+    refreshments = @room.add_refreshment_to_room(@bar.filter_refreshments_by_name("beer"))
+    assert_equal(1, refreshments.count)
+  end
+
+  def test_add_refreshment_to_room
+    refreshments = @room.add_refreshment_to_room(@venue.filter_refreshments_by_name("beer"))
+    assert_equal(1, refreshments.count)
+  end
+
+  def test_add_refreshment_cost_to_room_tab
+    @room.add_refreshment_to_room(@venue.filter_refreshments_by_name("beer"))
+    assert_equal(4, @room.add_refreshment_cost_to_room_tab)
   end
 
 
